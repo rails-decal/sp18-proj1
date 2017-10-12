@@ -163,21 +163,21 @@ If you ever have to reset your database (for instance you destroyed all the Poke
 
 #### Part 1: Create the Pokemon model
 
-Reference [Lecture 6](https://slides.com/railsdecal/week-6-model-relationships) for a recap of how to make a Pokemon belong to a Trainer. To set up the seed Pokemon, use `rake db:seed`.
+Reference [Lecture 5](https://docs.google.com/a/berkeley.edu/presentation/d/1HGOeKTpBMn0N6jQ2yzu78Q1jiz9ExEi97eNlIERgRXo/edit?usp=sharing) for a recap of how to make a Pokemon belong to a Trainer. To set up the seed Pokemon, use `rake db:seed`.
 
 #### Part 2: Implement capturing Pokemon
 
 To redirect to a certain page, use `redirect_to PREFIX_PATH`.
 
-`rake routes` will be very helpful in debugging. Since we are updating a Pokemon, your route should be a PATCH. If you need to jog your memory on routing, reference how routes were done in [Lecture 4](https://www.youtube.com/watch?v=3gNyJNPPTw4)
+`rails routes` will be very helpful in debugging. Since we are updating a Pokemon, your route should be a PATCH. If you need to jog your memory on routing, reference how routes were done in [Lecture 2](https://docs.google.com/a/berkeley.edu/presentation/d/1Xp7AaLfpWTurTnTndDDTodh8vD9LDDNwNUsiwbqlQ8g/edit?usp=sharing)
 
-Also, if you don't know what a URI pattern in a route is, look back at [Lecture 4](https://www.youtube.com/watch?v=3gNyJNPPTw4) again.
+Also, if you don't know what a URL pattern in a route is, look back at [Lecture 2](https://docs.google.com/a/berkeley.edu/presentation/d/1Xp7AaLfpWTurTnTndDDTodh8vD9LDDNwNUsiwbqlQ8g/edit?usp=sharing) or [Jon's demo](https://youtu.be/92Wqil7JCQg) again.
 
 To learn more about what `button_to` actually does, read up on its [documentation here](http://apidock.com/rails/ActionView/Helpers/UrlHelper/button_to) and [maybe this Stack Overflow](http://stackoverflow.com/questions/12475299/ruby-on-rails-button-to-link-to) post as well.
 
 #### Part 3: View other trainers' Pokemon
 
-Refer to the [live coding portion of Lecture 6](https://github.com/rails-decal/lecture6). This is from a previous iteration of the decal but is still valid.
+Refer to the [Lecture 5](https://docs.google.com/a/berkeley.edu/presentation/d/1HGOeKTpBMn0N6jQ2yzu78Q1jiz9ExEi97eNlIERgRXo/edit?usp=sharing). Also recall what you did for Lab 2.
 
 #### Part 4: Implement the ability to damage other trainers' Pokemon
 
@@ -193,4 +193,4 @@ To flash the appropriate error, use the line `flash[:error] = @pokemon.errors.fu
 
 #### Part 6: EXTRA CREDIT
 
-For easy deployment, reference [Heroku's deployment docs](https://devcenter.heroku.com/articles/getting-started-with-rails4#). You'll need to look at the *Local Workstation Setup* part and the *Deploy your application to Heroku* part.
+For easy deployment, reference [Heroku's deployment docs](https://devcenter.heroku.com/articles/getting-started-with-rails5). You'll need to look at the *Local Workstation Setup* part and the *Deploy your application to Heroku* part.
