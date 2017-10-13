@@ -34,9 +34,10 @@ Additionally, please make sure you consistently keep your repo up to date. In or
 # Do this line below once
 git remote add upstream git@github.com:rails-decal/fa17-proj1.git
 
-git fetch upstream
-git checkout master
-git merge upstream/master
+# The line below is not needed if you are already on master branch
+git checkout master 
+
+git pull upstream master
 ```
 If you are seeing permission denied errors, try replacing the first line with:
 `git remote add upstream https://github.com/rails-decal/fa17-proj1.git`
