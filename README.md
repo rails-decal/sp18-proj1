@@ -38,6 +38,8 @@ git fetch upstream
 git checkout master
 git merge upstream/master
 ```
+If you are seeing permission denied errors, try replacing the first line with:
+`git remote add upstream https://github.com/rails-decal/fa17-proj1.git`
 
 **Note:** The skeleton project we have created for you already implements sign up and sign in. Though this course will not cover the details of sign up and sign in, we know many of you will want to have sign up and sign in for your final projects, so here is the [link to a really simple and quick way to setup an entire Rails app with user authentication (and frontend framework) already implemented](https://github.com/RailsApps/rails-devise#generate). This is what we used to create the foundation of this project!
 
