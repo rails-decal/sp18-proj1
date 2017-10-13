@@ -66,7 +66,8 @@ In ANSWERS.md, answer Question 0.
   - level: integer
   - trainer_id: integer
 - After you've generated the model, migrate it into the database.
-- Edit your Pokemon.rb and Trainer.rb file so that a Pokemon belongs to a Trainer and a Trainer can have many Pokemon.
+- Edit your Pokemon.rb and Trainer.rb file so that a Pokemon *optionally* belongs to a Trainer and a Trainer can have many Pokemon.
+In order to have the optional of wild, trainerless Pokemon, we will need the line: `belongs_to :trainer, optional: true`.
 - Create a controller for your Pokemon model. This should be an empty controller for now, just make the file.
 - Seed your database with starter Pokemon with the seed file we've provided.
 
