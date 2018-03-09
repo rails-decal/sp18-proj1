@@ -2,7 +2,12 @@
 <p><%= link_to 'Trainers:', trainers_path %> <%= Trainer.count %> registered</p>
 
 <% if @pokemon and current_trainer %>
+  <% if @pokemon.ndex %>
+    <%= image_tag("pokemon/#{@pokemon.ndex}.png", alt: "pokemon") %>
+  <% end %>
   <p> A wild <%= @pokemon.name %> has appeared!</p>
   <!-- REPLACE THIS LINE BELOW -->
-  <div class="button medium"> Throw a Pokeball! </div>
+  <div>THIS SHALL BE REPLACED</div>
 <% end %>
+
+<%= image_tag("pokemon/pokemon-family.jpg", :alt => "pokemon") %>

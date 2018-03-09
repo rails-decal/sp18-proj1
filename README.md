@@ -74,13 +74,13 @@ In ANSWERS.md, answer Question 0.
 - Edit your Pokemon.rb and Trainer.rb file so that a Pokemon *optionally* belongs to a Trainer and a Trainer can have many Pokemon.
 In order to have the optional of wild, trainerless Pokemon, we will need the line: `belongs_to :trainer, optional: true`.
 - Create a controller for your Pokemon model. This should be an empty controller for now, just make the file.
-- Seed your database with starter Pokemon with the seed file we've provided.
+- Seed your database with starter Pokemon with the seed file we've provided. This can be achieved with the command `rails db:seed`.
 
 Go to localhost - you should be able to see the home page and sign up now. Once you've logged in and go back to the home page, some wild Pokemon should appear with every refresh, however you can't capture them!
 
 In ANSWERS.md, answer Question 1.
 
-#### Part 2: Implement capturing Pokemon
+#### Part 2: Implement capturing Pokémon
 
 - In `views/home/index.html.erb`, replace the div button with the following code: `<%= button_to "Throw a Pokeball!", capture_path(id: @pokemon), :class => "button medium", :method => :patch %>`
 - In your Pokemon controller, add a function called `capture`. This function should:
