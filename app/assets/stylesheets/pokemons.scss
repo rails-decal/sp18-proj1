@@ -1,0 +1,16 @@
+// Place all the styles related to the Pokemons controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pokemon-radio-container > div, label {
+  display: inline-block;
+}
+
+.create-pokemon-btn {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #4c8ef7;
+  color: white;
+  border: 4px solid white;
+  font-size: 24px;
+}

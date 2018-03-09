@@ -35,7 +35,7 @@ Additionally, please make sure you consistently keep your repo up to date. In or
 git remote add upstream git@github.com:rails-decal/fa17-proj1.git
 
 # The line below is not needed if you are already on master branch
-git checkout master 
+git checkout master
 
 git pull upstream master
 ```
@@ -58,7 +58,7 @@ Throughout this project you will be creating a PokePortal, a mysterious realm wh
 
 #### Part 0: Setup PokePortal
 
-Fork this repo and clone it in your terminal. `cd` into the directory, run `bundle install --without production` and migrate your database, then start your server. (If you have trouble running the bundle install, try running `rvm use 2.2.0` in your terminal first). In localhost, you should see an error that says: "uninitialized constant HomeController::Pokemon". This is expected; let's fix it.
+Fork this repo and clone it in your terminal. `cd` into the directory, run `bundle install --without production` and migrate your database, then start your server. (If you have trouble running the bundle install, try running `rvm use 2.4.1` (or whatever your version of Ruby you downloaded is) in your terminal first). In localhost, you should see an error that says: "uninitialized constant HomeController::Pokemon". This is expected; let's fix it.
 
 In ANSWERS.md, answer Question 0.
 
@@ -68,6 +68,8 @@ In ANSWERS.md, answer Question 0.
   - name: string
   - level: integer
   - trainer_id: integer
+  - ndex: integer (this is the pokedex number!)
+- **Note:** Try to use the `references` column type in order to associate the `pokemon` with the appropriate `trainer`. This will affect how you generate the column with `trainer_id`. It is ok to simply create the `trainer_id` column of type `integer`, but with the `references` type we also build an index on the `trainer_id` foreign key which makes lookups more efficient.
 - After you've generated the model, migrate it into the database.
 - Edit your Pokemon.rb and Trainer.rb file so that a Pokemon *optionally* belongs to a Trainer and a Trainer can have many Pokemon.
 In order to have the optional of wild, trainerless Pokemon, we will need the line: `belongs_to :trainer, optional: true`.
