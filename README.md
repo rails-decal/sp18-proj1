@@ -128,15 +128,21 @@ In this part, we will allow the current trainer logged in to create his or her o
 - Create a folder `pokemons` in `views`. Make a new file in that folder called `new.html.erb`.
   - Use `simple_form_for` to make a form for creating a new Pokemon. You should refer to the [documentation on simple_form](https://github.com/plataformatec/simple_form#usage). The only fields in your form should be the Pokemon's `name` **and the Pokemon's `ndex`**.
     - In order to capture the Pokemon's `ndex`, or Pokedex number, we want to include a radio selector over all Pokemon options available to choose from. Add a field for `ndex` using the code below. As a challenge, try to understand what it's doing!
-```
-<%= f.collection_radio_buttons(
-    :ndex, (1..649).map {|ndex| [ndex, ndex]}, :first, :last
-  ) do |b| %>
-  <div class="pokemon-choice-container">
-    <%= b.label { image_tag("pokemon/#{b.text}.png") + b.radio_button } %>
-  </div>
-<% end %>
-```
+    ```
+    <%= f.collection_radio_buttons(
+        :ndex, (1..649).map {|ndex| [ndex, ndex]}, :first, :last
+      ) do |b| %>
+      <div class="pokemon-choice-container">
+        <%= b.label { image_tag("pokemon/#{b.text}.png") + b.radio_button } %>
+      </div>
+    <% end %>
+    ```
+    - Don't forget to add a submit button! Use this code to make it nice and big (it applies the CSS we defined in `pokemons.scss`)
+    ```
+    <%= f.button :submit, class: "create-pokemon-btn" %>
+    ```
+    - It should look like this if you've done it right!
+    ![](public/poke-portal-create-pokemons.png)
   - Create the necessary methods in the Pokemons controller that are needed to show the form and to handle the form's data after submit.
     - Since we only had the Pokemon's name in the form, we want to set every other attribute to a default. Default health to 100 and level to 1.
     - Set the new Pokemon's trainer to the current logged-in trainer.
@@ -186,11 +192,11 @@ Congratulations. You are a Pokemon master.
 
 #### General
 
-If you ever have to reset your database (for instance you destroyed all the Pokemon in the PokePortal or you messed up your migrations), run `rake db:reset` to drop, recreate, migrate, and reseed your database.
+If you ever have to reset your database (for instance you destroyed all the Pokemon in the PokePortal or you messed up your migrations), run `rails db:reset` to drop, recreate, migrate, and reseed your database.
 
 #### Part 1: Create the Pokemon model
 
-Reference [Lecture 5](https://docs.google.com/a/berkeley.edu/presentation/d/1HGOeKTpBMn0N6jQ2yzu78Q1jiz9ExEi97eNlIERgRXo/edit?usp=sharing) for a recap of how to make a Pokemon belong to a Trainer. To set up the seed Pokemon, use `rake db:seed`.
+Reference [Lecture 5](https://docs.google.com/a/berkeley.edu/presentation/d/1HGOeKTpBMn0N6jQ2yzu78Q1jiz9ExEi97eNlIERgRXo/edit?usp=sharing) for a recap of how to make a Pokemon belong to a Trainer. To set up the seed Pokemon, use `rails db:seed`.
 
 #### Part 2: Implement capturing Pokemon
 
