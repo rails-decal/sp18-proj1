@@ -32,7 +32,7 @@ If you're having bundle install issues, please refer to Piazza for help. You can
 Additionally, please make sure you consistently keep your repo up to date. In order to sync your repository with ours:
 ```
 # Do this line below once
-git remote add upstream git@github.com:rails-decal/fa17-proj1.git
+git remote add upstream git@github.com:rails-decal/sp18-proj1.git
 
 # The line below is not needed if you are already on master branch
 git checkout master
@@ -40,7 +40,7 @@ git checkout master
 git pull upstream master
 ```
 If you are seeing permission denied errors, try replacing the first line with:
-`git remote add upstream https://github.com/rails-decal/fa17-proj1.git`
+`git remote add upstream https://github.com/rails-decal/sp18-proj1.git`
 
 **Note:** The skeleton project we have created for you already implements sign up and sign in. Though this course will not cover the details of sign up and sign in, we know many of you will want to have sign up and sign in for your final projects, so here is the [link to a really simple and quick way to setup an entire Rails app with user authentication (and frontend framework) already implemented](https://github.com/RailsApps/rails-devise#generate). This is what we used to create the foundation of this project!
 
@@ -65,20 +65,20 @@ In ANSWERS.md, answer Question 0.
 #### Part 1: Create the Pokemon model
 
 - Run the `generate` method you've learned to generate the Pokemon model. The model should have the following attributes
-  - name: string
-  - level: integer
-  - trainer_id: integer
-  - ndex: integer (this is the pokedex number!)
+  - `name`: `string`
+  - `level`: `integer`
+  - `trainer_id`: `integer`
+  - `ndex`: `integer` (this is the pokedex number!)
 - **Note:** Try to use the `references` column type in order to associate the `pokemon` with the appropriate `trainer`. This will affect how you generate the column with `trainer_id`. It is ok to simply create the `trainer_id` column of type `integer`, but with the `references` type we also build an index on the `trainer_id` foreign key which makes lookups more efficient.
 - After you've generated the model, migrate it into the database.
-- Edit your Pokemon.rb and Trainer.rb file so that a Pokemon *optionally* belongs to a Trainer and a Trainer can have many Pokemon.
+- Edit your `pokemon.rb` and `trainer.rb` file so that a Pokemon *optionally* belongs to a Trainer and a Trainer can have many Pokemon.
 In order to have the optional of wild, trainerless Pokemon, we will need the line: `belongs_to :trainer, optional: true`.
 - Create a controller for your Pokemon model. This should be an empty controller for now, just make the file.
 - Seed your database with starter Pokemon with the seed file we've provided. This can be achieved with the command `rails db:seed`.
 
 Go to localhost - you should be able to see the home page and sign up now. Once you've logged in and go back to the home page, some wild Pokemon should appear with every refresh, however you can't capture them!
 
-In ANSWERS.md, answer Question 1.
+In `ANSWERS.md`, answer Question 1.
 
 #### Part 2: Implement capturing Pokemon
 
@@ -92,7 +92,7 @@ In ANSWERS.md, answer Question 1.
 
 On your localhost, you should now be able to capture Pokemon! Double check in your console that a captured Pokemon now belongs to you.
 
-In ANSWERS.md, answer Question 2.
+In `ANSWERS.md`, answer Question 2.
 
 #### Part 3: View other trainers' Pokemon
 
@@ -101,7 +101,7 @@ In ANSWERS.md, answer Question 2.
 
 On your localhost, you should now be able to view all your Pokemon in your profile!
 
-In ANSWERS.md, answer Question 3.
+In `ANSWERS.md`, answer Question 3.
 
 #### Part 4: Implement the ability to damage other trainers' Pokemon
 
@@ -117,7 +117,7 @@ In ANSWERS.md, answer Question 3.
 
 On your profile page, try damaging your own Pokemon. Try destroying one.
 
-In ANSWERS.md, answer Question 4.
+In `ANSWERS.md`, answer Question 4.
 
 #### Part 5: Create your own new Pokemon
 
@@ -145,6 +145,7 @@ In this part, we will allow the current trainer logged in to create his or her o
     ![](public/poke-portal-create-pokemons.png)
   - Create the necessary methods in the Pokemons controller that are needed to show the form and to handle the form's data after submit.
     - Since we only had the Pokemon's name in the form, we want to set every other attribute to a default. Default health to 100 and level to 1.
+    - It is highly recommended that you use **strong parameters** in order to retrieve data from `params`. While doing this, make sure you `permit` **BOTH** the `name` and the `ndex` fields, since these are the data fields that we are receiving from the create pokemon form. 
     - Set the new Pokemon's trainer to the current logged-in trainer.
     - Redirect to the current logged-in trainer's profile.
   - Route the methods accordingly.
@@ -159,7 +160,7 @@ Now if you go into your localhost, you should be able to create new Pokemon for 
 
 Now you shouldn't be able to create new Pokemon with no name or a duplicate name.
 
-In ANSWERS.md, answer Question 5.
+In `ANSWERS.md`, answer Question 5.
 
 #### Part 6: EXTRA CREDIT
 
