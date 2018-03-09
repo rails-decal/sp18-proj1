@@ -97,6 +97,7 @@ In ANSWERS.md, answer Question 2.
 #### Part 3: View other trainers' Pokemon
 
 - Figure out where in the app you can see a trainer's profile. In that view, add a list of the trainer's Pokemon. Each Pokemon should show its name and level.
+- Additionally, the Pokemon's sprite should be rendered above its name/level. Take a look at lines 5-7 of `app/views/home/index.html.erb`, and try to pattern match those lines of code.
 
 On your localhost, you should now be able to view all your Pokemon in your profile!
 
@@ -106,11 +107,11 @@ In ANSWERS.md, answer Question 3.
 
 - Make the Pokemon model have a health column as well.
   - Go into your `db/seeds.rb` file and make all seed Pokemon start out with 100 health.
-  - After you've changed the seeds, run `rake db:reset`. This command drops your database, creates a new one, runs all migrations, and seeds the database. Now you should have seeded Pokemon with health as well.
+  - After you've changed the seeds, run `rails db:reset` then `rails db:seed`. This command drops your database, creates a new one, runs all migrations, and seeds the database. Now you should have seeded Pokemon with health as well.
   - Show health for each Pokemon in the list on a Trainer's profile.
 - Based on Part 2, you should be able to mimic the capture method to implement a damage method.
   - Each damage should subtract 10 health from the Pokemon.
-  - You should redirect back to the trainer's profile page at the end of the damage method. Hint: run `rake routes` to see what path you need.
+  - You should redirect back to the trainer's profile page at the end of the damage method. Hint: run `rails routes` to see what path you need.
   - There should be a button that says "Damage!" next to each Pokemon in the list of Pokemon on each trainer's page. You can follow the same syntax you used for the button in part 2 to implement this button, except changing two things.
 - If a Pokemon reaches <= 0 health after being damaged, destroy it. It should no longer exist in the database. It is dead.
 
@@ -125,7 +126,17 @@ Now that it's so easy to destroy Pokemon, we need a way to create new Pokemon.
 In this part, we will allow the current trainer logged in to create his or her own Pokemon that will automatically belong to himself/herself.
 
 - Create a folder `pokemons` in `views`. Make a new file in that folder called `new.html.erb`.
-  - Use simple_form to make a form for creating a new Pokemon. You should refer to the [documentation on simple_form](https://github.com/plataformatec/simple_form#usage). The only field in your form should be the Pokemon's name.
+  - Use `simple_form_for` to make a form for creating a new Pokemon. You should refer to the [documentation on simple_form](https://github.com/plataformatec/simple_form#usage). The only fields in your form should be the Pokemon's `name` **and the Pokemon's `ndex`**.
+    - In order to capture the Pokemon's `ndex`, or Pokedex number, we want to include a radio selector over all Pokemon options available to choose from. Add a field for `ndex` using the code below. As a challenge, try to understand what it's doing!
+```
+<%= f.collection_radio_buttons(
+    :ndex, (1..649).map {|ndex| [ndex, ndex]}, :first, :last
+  ) do |b| %>
+  <div class="pokemon-choice-container">
+    <%= b.label { image_tag("pokemon/#{b.text}.png") + b.radio_button } %>
+  </div>
+<% end %>
+```
   - Create the necessary methods in the Pokemons controller that are needed to show the form and to handle the form's data after submit.
     - Since we only had the Pokemon's name in the form, we want to set every other attribute to a default. Default health to 100 and level to 1.
     - Set the new Pokemon's trainer to the current logged-in trainer.
