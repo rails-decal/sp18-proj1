@@ -73,7 +73,7 @@ In ANSWERS.md, answer Question 0.
 - After you've generated the model, migrate it into the database.
 - Edit your `pokemon.rb` and `trainer.rb` file so that a Pokemon *optionally* belongs to a Trainer and a Trainer can have many Pokemon.
 In order to have the optional of wild, trainerless Pokemon, we will need the line: `belongs_to :trainer, optional: true`.
-- Create a controller for your Pokemon model. This should be an empty controller for now, just make the file.
+- Generate a controller for your Pokemon model. This should be an empty controller for now, just make the file. We've already created a `pokemons.scss` file for you. **DO NOT OVERWRITE THIS** when it asks you for it in the generation prompt. 
 - Seed your database with starter Pokemon with the seed file we've provided. This can be achieved with the command `rails db:seed`.
 
 Go to localhost - you should be able to see the home page and sign up now. Once you've logged in and go back to the home page, some wild Pokemon should appear with every refresh, however you can't capture them!
@@ -145,7 +145,7 @@ In this part, we will allow the current trainer logged in to create his or her o
     ![](public/poke-portal-create-pokemons.png)
   - Create the necessary methods in the Pokemons controller that are needed to show the form and to handle the form's data after submit.
     - Since we only had the Pokemon's name in the form, we want to set every other attribute to a default. Default health to 100 and level to 1.
-    - It is highly recommended that you use **strong parameters** in order to retrieve data from `params`. While doing this, make sure you `permit` **BOTH** the `name` and the `ndex` fields, since these are the data fields that we are receiving from the create pokemon form. 
+    - It is highly recommended that you use **strong parameters** in order to retrieve data from `params`. While doing this, make sure you `permit` **BOTH** the `name` and the `ndex` fields, since these are the data fields that we are receiving from the create pokemon form.
     - Set the new Pokemon's trainer to the current logged-in trainer.
     - Redirect to the current logged-in trainer's profile.
   - Route the methods accordingly.
