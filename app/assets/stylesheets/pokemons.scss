@@ -4,6 +4,13 @@
 
 .pokemon-radio-container > div, label {
   display: inline-block;
+  transition: 150ms;
+  &:hover {
+    background-color: rgba(0.8, 0.8, 1, 0.05);
+    transform: scale(1.05, 1.05);
+    transform-origin: center;
+  }
+  border-radius: 5px;
 }
 
 .create-pokemon-btn {
@@ -13,4 +20,11 @@
   color: white;
   border: 4px solid white;
   font-size: 24px;
+  transition: 150ms;
+  &:hover {
+    background-color: #659df7;
+    transform: scale(1.05, 1.05);
+    transform-origin: center;
+    cursor: pointer;
+  }
 }
